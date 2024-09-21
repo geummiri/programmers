@@ -4,7 +4,6 @@ class Solution {
     public String solution(String s) {
        String answer = "";
        String[] arr = s.split(" ");
-       char ch = s.charAt(s.length()-1);
 
         for (int i = 0; i < arr.length; i++) {
             String str = arr[i];
@@ -28,12 +27,15 @@ class Solution {
                     ch2 = Character.toLowerCase(ch2);
                 newStr += String.valueOf(ch2);
             }
-            answer += newStr + " ";
+             if (i == arr.length - 1) {
+                answer += newStr;
+                if(String.valueOf(s.charAt(s.length()-1)).equals(" "))
+                    return answer+" ";
             }
-        
-        if(ch == ' ')
-            return answer;
-
-        return answer.trim();
+            else answer += newStr + " ";
+            
+            
+            }
+        return answer;
     }
 }
